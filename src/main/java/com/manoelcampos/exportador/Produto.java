@@ -1,8 +1,5 @@
 package com.manoelcampos.exportador;
 
-/**
- * @author Manoel Campos da Silva Filho
- */
 public class Produto {
     /**
      * Último ID gerado automaticamente.

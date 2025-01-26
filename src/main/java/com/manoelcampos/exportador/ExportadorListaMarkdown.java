@@ -6,9 +6,10 @@ import java.util.function.Function;
 
 /**
  * Exporta uma tabela de objetos para o formato Markdown.
- * @author Manoel Campos da Silva Filho
  */
 public class ExportadorListaMarkdown extends AbstractExportadorListaProduto {
+
+    private static final String SEPARADOR_LN = "-";
 
     @Override
     public String abrirTabela() {
@@ -37,12 +38,23 @@ public class ExportadorListaMarkdown extends AbstractExportadorListaProduto {
 
     @Override
     public String fecharLinhaTitulos() {
-        return "";
+        StringBuilder sb = new StringBuilder();
+        for (Coluna coluna : getColunas()) {
+            String linha = stringRepeat(SEPARADOR_LN, coluna.getTitulo().length());
+            sb.append(linha).append(ColunaMarkdown.SEPARADOR);
+        }
+
+        sb.append("\n");
+        return sb.toString();
     }
 
     @Override
     public Coluna newColuna(String titulo, Function<Produto, Object> funcaoValorColuna) {
-        return new ColunaHtml(titulo, funcaoValorColuna);
+        return new ColunaMarkdown(titulo, funcaoValorColuna);
+    }
+
+    private String stringRepeat(String s, int repeticoes){
+        return String.format("%0" + repeticoes + "d", 0).replace("0", s);
     }
 
 }

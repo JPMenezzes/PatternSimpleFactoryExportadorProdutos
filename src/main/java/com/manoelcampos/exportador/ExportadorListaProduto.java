@@ -7,8 +7,6 @@ import java.util.function.Function;
  * Define a interface para criação de classes que implementam
  * a exportação de uma lista de produtos para
  * formatos específicos como HTML, CSV, Markdown, etc.
- *
- * @author Manoel Campos da Silva Filho
  */
 public interface ExportadorListaProduto {
     /**
@@ -59,7 +57,5 @@ public interface ExportadorListaProduto {
 
     Coluna newColuna(String titulo, Function<Produto, Object> funcaoValorColuna);
 
-    void addColuna(Coluna coluna);
-
-    Coluna addNewColuna(String titulo, Function<Produto, Object> funcaoValorColuna);
+    void addNewColuna(String titulo, Function<Produto, Object> funcaoValorColuna);
 }

@@ -4,10 +4,6 @@ import com.manoelcampos.exportador.Produto;
 
 import java.util.List;
 
-/**
- * Executa a aplicação Exportador Simple Factory.
- * @author Manoel Campos da Silva Filho
- */
 public class Principal {
 
     private static final List<Produto> PRODUTOS = List.of(
@@ -24,8 +20,7 @@ public class Principal {
     private void exportarProdutos() {
         ExportadorListaProduto exportadorPadrao = ExportadorListaProduto.newInstance();
 
-        Coluna coluna = exportadorPadrao.addNewColuna("Estoque multiplicado", this::multiplicaEstoque);
-        exportadorPadrao.addColuna(coluna);
+        exportadorPadrao.addNewColuna("Estoque multiplicado", this::multiplicaEstoque);
 
         System.out.println("Lista de Produtos em HTML----------------------------------------------------------\n");
         System.out.println(exportadorPadrao.exportar(PRODUTOS));

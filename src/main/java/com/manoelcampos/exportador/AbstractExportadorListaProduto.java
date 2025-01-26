@@ -7,8 +7,6 @@ import java.util.function.Function;
 /**
  * Classe abstrata que fornece uma implementação base para as subclasses
  * que definem formatos específicos de exportação de dados.
- *
- * @author Manoel Campos da Silva Filho
  */
 public abstract class AbstractExportadorListaProduto implements ExportadorListaProduto {
 
@@ -61,14 +59,8 @@ public abstract class AbstractExportadorListaProduto implements ExportadorListaP
     }
 
     @Override
-    public void addColuna(Coluna coluna) {
-        colunas.add(coluna);
-    }
-
-    @Override
-    public final Coluna addNewColuna(String titulo, Function<Produto, Object> funcaoValorColuna) {
+    public final void addNewColuna(String titulo, Function<Produto, Object> funcaoValorColuna) {
         Coluna coluna = newColuna(titulo, funcaoValorColuna);
-        getColunas().add(coluna);
-        return coluna;
+        colunas.add(coluna);
     }
 }
